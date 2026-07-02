@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NoteFy — Diary, Notes & Reminders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-blobs" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+</div>
+<div class="app">
+  <aside class="sidebar glass">
+    <div class="brand">
+      <span class="brand-icon">🌻</span>
+      <h1>NoteFy</h1>
+    </div>
+    <button class="btn-add" id="btnAdd">
+      <span>+</span> Add New
+    </button>
+    <nav class="nav-filters" id="navFilters">
+      <button class="nav-item active" data-filter="all">
+        <span class="nav-emoji">📚</span> All <span class="count" id="countAll">0</span>
+      </button>
+      <button class="nav-item" data-filter="diary">
+        <span class="nav-emoji">📔</span> Diary <span class="count" id="countDiary">0</span>
+      </button>
+      <button class="nav-item" data-filter="note">
+        <span class="nav-emoji">🗒️</span> Notes <span class="count" id="countNote">0</span>
+      </button>
+      <button class="nav-item" data-filter="reminder">
+        <span class="nav-emoji">⏰</span> Reminders <span class="count" id="countReminder">0</span>
+      </button>
+      <button class="nav-item" data-filter="favorite">
+        <span class="nav-emoji">⭐</span> Favorites <span class="count" id="countFav">0</span>
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <p id="clock" class="clock">--:--:--</p>
+      <p id="today" class="today-date">-</p>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar glass">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search diary, notes, or reminders...">
+      </div>
+      <div class="sort-wrap">
+        <select id="sortSelect">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="az">A - Z</option>
+        </select>
+      </div>
+    </header>
+    <section class="content">
+      <div class="content-header">
+        <h2 id="viewTitle">All Notes</h2>
+        <p id="viewSubtitle" class="muted">Everything you saved is right here</p>
+      </div>
+      <div class="grid" id="cardGrid"></div>
+      <div class="empty-state" id="emptyState">
+        <span class="empty-emoji">🌤️</span>
+        <h3>Nothing here yet</h3>
+        <p>Start writing your first diary entry, note, or reminder.</p>
+        <button class="btn-add-small" id="btnAddEmpty">+ Add New</button>
+      </div>
+    </section>
+  </main>
+</div>
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal glass" id="modalBox">
+    <div class="modal-head">
+      <h3 id="modalTitle">Add New</h3>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="type-tabs" id="typeTabs">
+      <button class="type-tab active" data-type="diary">📔 Diary</button>
+      <button class="type-tab" data-type="note">🗒️ Note</button>
+      <button class="type-tab" data-type="reminder">⏰ Reminder</button>
+    </div>
+    <form id="itemForm">
+      <input type="hidden" id="editId">
+      <label class="field">
+        <span>Title</span>
+        <input type="text" id="fieldTitle" placeholder="A short title..." required>
+      </label>
+      <div class="mood-row" id="moodRow">
+        <span>Mood today:</span>
+        <div class="mood-options">
+          <button type="button" class="mood-btn" data-mood="😄">😄</button>
+          <button type="button" class="mood-btn" data-mood="🙂">🙂</button>
+          <button type="button" class="mood-btn" data-mood="😐">😐</button>
+          <button type="button" class="mood-btn" data-mood="😢">😢</button>
+          <button type="button" class="mood-btn" data-mood="😡">😡</button>
+        </div>
+      </div>
+      <label class="field">
+        <span>Content</span>
+        <textarea id="fieldContent" rows="5" placeholder="Write here..." required></textarea>
+      </label>
+      <label class="field" id="dateField">
+        <span>Reminder Date & Time</span>
+        <input type="datetime-local" id="fieldDate">
+      </label>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" id="btnCancel">Cancel</button>
+        <button type="submit" class="btn-primary" id="btnSave">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="reminder-alert" id="reminderAlert">
+  <div class="reminder-alert-box glass">
+    <span class="reminder-alert-emoji">⏰</span>
+    <h3 id="reminderAlertTitle">Reminder!</h3>
+    <p id="reminderAlertText"></p>
+    <button id="reminderAlertClose" class="btn-primary">Got it</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
