@@ -37,7 +37,7 @@ The project is intentionally split into separate HTML / CSS / JS files with no b
 
 ---
 
-## 🚀 Getting Started
+## 🍙 Getting Started
 
 1. Download all four files (`index.html`, `style.css`, `script.js`, `logo.svg`) into the **same folder**.
 2. Open `index.html` in any modern browser (Chrome, Edge, Firefox, Safari).
