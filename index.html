@@ -11,15 +11,9 @@
 </head>
 <body>
 
-<div class="bg-blobs" aria-hidden="true">
-  <span class="blob blob-1"></span>
-  <span class="blob blob-2"></span>
-  <span class="blob blob-3"></span>
-</div>
-
 <div class="app">
 
-  <aside class="sidebar glass">
+  <aside class="sidebar surface">
     <div class="brand">
       <img src="logo.svg" alt="NoteFy logo" class="brand-logo">
       <div class="brand-text">
@@ -57,7 +51,7 @@
   </aside>
 
   <main class="main">
-    <header class="topbar glass">
+    <header class="topbar surface">
       <div class="search-wrap">
         <span class="search-icon">🔍</span>
         <input type="text" id="searchInput" placeholder="Search diary, notes, or reminders...">
@@ -77,6 +71,13 @@
         <p id="viewSubtitle" class="muted">Everything you saved is right here</p>
       </div>
 
+      <div class="grid" id="skeletonGrid" aria-hidden="true">
+        <div class="card skeleton-card"><div class="sk sk-tag"></div><div class="sk sk-title"></div><div class="sk sk-line"></div><div class="sk sk-line short"></div><div class="sk sk-line shorter"></div></div>
+        <div class="card skeleton-card"><div class="sk sk-tag"></div><div class="sk sk-title"></div><div class="sk sk-line"></div><div class="sk sk-line short"></div><div class="sk sk-line shorter"></div></div>
+        <div class="card skeleton-card"><div class="sk sk-tag"></div><div class="sk sk-title"></div><div class="sk sk-line"></div><div class="sk sk-line short"></div><div class="sk sk-line shorter"></div></div>
+        <div class="card skeleton-card"><div class="sk sk-tag"></div><div class="sk sk-title"></div><div class="sk sk-line"></div><div class="sk sk-line short"></div><div class="sk sk-line shorter"></div></div>
+      </div>
+
       <div class="grid" id="cardGrid"></div>
 
       <div class="empty-state" id="emptyState">
@@ -90,7 +91,7 @@
 </div>
 
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal glass" id="modalBox">
+  <div class="modal surface" id="modalBox">
     <div class="modal-head">
       <h3 id="modalTitle">Add New</h3>
       <button class="modal-close" id="modalClose">✕</button>
@@ -150,7 +151,7 @@
 <div class="toast" id="toast"></div>
 
 <div class="reminder-alert" id="reminderAlert">
-  <div class="reminder-alert-box glass">
+  <div class="reminder-alert-box surface">
     <span class="reminder-alert-emoji">⏰</span>
     <h3 id="reminderAlertTitle">Reminder!</h3>
     <p id="reminderAlertText"></p>
