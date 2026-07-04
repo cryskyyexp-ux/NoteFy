@@ -13,6 +13,7 @@
 
   const el = {
     grid: document.getElementById("cardGrid"),
+    skeletonGrid: document.getElementById("skeletonGrid"),
     emptyState: document.getElementById("emptyState"),
     viewTitle: document.getElementById("viewTitle"),
     viewSubtitle: document.getElementById("viewSubtitle"),
@@ -164,7 +165,7 @@
       item.reminderAt < Date.now() &&
       !item.done;
 
-    card.className = `card glass type-${item.type}${isOverdue ? " overdue" : ""}`;
+    card.className = `card type-${item.type}${isOverdue ? " overdue" : ""}`;
     card.dataset.id = item.id;
 
     const typeInfo = TYPE_LABELS[item.type];
@@ -509,9 +510,14 @@
     setMoodSelection("🙂");
     updateClock();
     setInterval(updateClock, 1000);
-    checkReminders();
-    setInterval(checkReminders, 15000);
-    render();
+    el.grid.classList.add("hide");
+    setTimeout(() => {
+      el.skeletonGrid.classList.add("hide");
+      el.grid.classList.remove("hide");
+      checkReminders();
+      setInterval(checkReminders, 15000);
+      render();
+    }, 700);
   }
 
   init();
